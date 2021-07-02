@@ -1,16 +1,16 @@
-function chargeImgFetch(apiUrl, cb){ 
-    fetch(apiUrl).then(function (data){ 
+function chargeImgFetch(apiUrl, cb) {
+    fetch(apiUrl).then(function (data) {
         return data.json()
-    }).then(function (data){
+    }).then(function (data) {
         console.log(data)
         cb(data)
     })
 }
 
-function creationGraphique(images, section){
+function creationGraphique(images, section) {
     images.forEach(img => {
         createImg(img, section);
-        
+
     });
 }
 
@@ -24,39 +24,39 @@ function createImg(img, section) {
     return { article, article };
 }
 
-let getFile = function() {
+let getFile = function () {
     let filesInput = document.querySelector("#fileItem");
     let file = filesInput.files;
     let imageType = /^image\//;
 
-    if((!imageType.test(file[0].type))){
+    if ((!imageType.test(file[0].type))) {
         alert("veuillez sélectionner une image");
-    }else {
+    } else {
         let section = document.querySelector("#fileImg")
         let preview = document.createElement("img");
         section.innerHTML = ''
         section.appendChild(preview);
 
-        let file    = document.querySelector('input[type=file]').files[0];
-        let reader  = new FileReader();
-      
+        let file = document.querySelector('input[type=file]').files[0];
+        let reader = new FileReader();
+
         reader.addEventListener("load", function () {
-          preview.src = reader.result;
+            preview.src = reader.result;
         }, false);
-      
+
         if (file) {
-          reader.readAsDataURL(file);
+            reader.readAsDataURL(file);
         }
-        
+
     }
 }
 
-function base64(callback){
+function base64(callback) {
     console.log("DANS LA base64")
     let data = document.querySelector("#fileItem").files[0]
     let reader = new FileReader();
-    reader.onload = function() {    
-      callback(reader.result);
+    reader.onload = function () {
+        callback(reader.result);
     }
     reader.readAsDataURL(data);
 }
@@ -66,10 +66,10 @@ async function sendData(data) {
 
     let name = document.querySelector("#fileItem").files[0].name;
     let obj = {
-        body: {
-            name : name,
-            file : data
-        }
+
+        name: name,
+        file: data
+
     }
     console.log("OBJ", obj)
 
@@ -80,23 +80,23 @@ async function sendData(data) {
 }
 
 
-document.addEventListener("DOMContentLoaded", function(){
+document.addEventListener("DOMContentLoaded", function () {
 
     let apiUrl = "http://restcountries.eu/rest/v2";
-    chargeImgFetch(apiUrl, function(data){
+    chargeImgFetch(apiUrl, function (data) {
         console.log(data)
         creationGraphique(data, document.getElementById("library"));
     })
-    
+
     document.querySelector("#fileItem").onchange = getFile;
 
     let form = document.querySelector('form');
 
-    form.addEventListener("submit", function(e){
+    form.addEventListener("submit", function (e) {
         e.preventDefault();
         base64(sendData);
         let section = document.querySelector("#fileImg");
         section.innerHTML = '';
-        
+
     });
 });
