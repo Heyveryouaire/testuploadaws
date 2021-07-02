@@ -74,7 +74,7 @@ async function sendData(data) {
     let XHR = new XMLHttpRequest();
     XHR.open('POST', 'https://279htbz50g.execute-api.us-east-1.amazonaws.com/image');
     //XHR.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    XHR.send(obj);
+    XHR.send(JSON.stringify(obj));
 }
 
 
