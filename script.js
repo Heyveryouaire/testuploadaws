@@ -73,11 +73,13 @@ async function sendData(data) {
     }
     console.log("OBJ", obj)
     const headers = {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*"
     }
 
     fetch('https://279htbz50g.execute-api.us-east-1.amazonaws.com/image', {
         method:"post",
+        mode: "cors",
         headers,
         body: JSON.stringify(obj)
     }).then(rep => {
