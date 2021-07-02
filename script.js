@@ -72,18 +72,30 @@ async function sendData(data) {
 
     }
     console.log("OBJ", obj)
+    const headers = {
+        "Content-Type": "application/json"
+    }
 
-    let XHR = new XMLHttpRequest();
-    XHR.open('POST', 'https://279htbz50g.execute-api.us-east-1.amazonaws.com/image');
-    XHR.setRequestHeader('Content-Type', 'application/json');
-    XHR.setRequestHeader('Content-Type', 'application/x-object');
-    XHR.setRequestHeader('Content-Type', 'application/octet-stream');
-    XHR.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    XHR.setRequestHeader('Access-Control-Allow-Origin', '*');
-    XHR.setRequestHeader('Access-Control-Allow-Methods', '*');
+    fetch('https://279htbz50g.execute-api.us-east-1.amazonaws.com/image', {
+        method:"post",
+        headers,
+        body: JSON.stringify(obj)
+    }).then(rep => {
+        console.log('rep', rep)
+    })
+
+
+    // let XHR = new XMLHttpRequest();
+    // XHR.open('POST', 'https://279htbz50g.execute-api.us-east-1.amazonaws.com/image');
+    // XHR.setRequestHeader('Content-Type', 'application/json');
+    // XHR.setRequestHeader('Content-Type', 'application/x-object');
+    // XHR.setRequestHeader('Content-Type', 'application/octet-stream');
+    // XHR.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    // XHR.setRequestHeader('Access-Control-Allow-Origin', '*');
+    // XHR.setRequestHeader('Access-Control-Allow-Methods', '*');
     
 
-    XHR.send(JSON.stringify(obj));
+    // XHR.send(JSON.stringify(obj));
 }
 
 
