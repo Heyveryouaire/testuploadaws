@@ -79,7 +79,6 @@ async function sendData(data) {
 
     fetch('https://279htbz50g.execute-api.us-east-1.amazonaws.com/image', {
         method:"post",
-        mode: "cors",
         headers,
         body: JSON.stringify(obj)
     }).then(rep => {
