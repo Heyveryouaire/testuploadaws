@@ -66,8 +66,10 @@ async function sendData(data) {
 
     let name = document.querySelector("#fileItem").files[0].name;
     let obj = {
-        name : name,
-        file : data
+        body: {
+            name : name,
+            file : data
+        }
     }
     console.log("OBJ", obj)
 
