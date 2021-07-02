@@ -76,6 +76,13 @@ async function sendData(data) {
     let XHR = new XMLHttpRequest();
     XHR.open('POST', 'https://279htbz50g.execute-api.us-east-1.amazonaws.com/image');
     XHR.setRequestHeader('Content-Type', 'application/json');
+    XHR.setRequestHeader('Content-Type', 'application/x-object');
+    XHR.setRequestHeader('Content-Type', 'application/octet-stream');
+    XHR.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    XHR.setRequestHeader('Access-Control-Allow-Origin', '*');
+    XHR.setRequestHeader('Access-Control-Allow-Methods', '*');
+    
+
     XHR.send(JSON.stringify(obj));
 }
 
