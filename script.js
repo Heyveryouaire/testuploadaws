@@ -72,7 +72,7 @@ async function sendData(data) {
     console.log("OBJ", obj)
 
     let XHR = new XMLHttpRequest();
-    XHR.open('POST', 'https://example.com/cors.php');
+    XHR.open('POST', 'https://	https://279htbz50g.execute-api.us-east-1.amazonaws.com/image');
     //XHR.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     XHR.send(obj);
 }
